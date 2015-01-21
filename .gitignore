@@ -1,0 +1,10 @@
+*.pyc
+
+# vim
+*.swp
+
+# asv generated files
+results/
+html/
+env/
+scikit-xray/
