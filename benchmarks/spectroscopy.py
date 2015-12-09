@@ -3,7 +3,7 @@ from __future__ import (absolute_import, division, print_function,
 
 import six  # noqa
 import numpy as np
-from skxray.spectroscopy import align_and_scale
+from skbeam.spectroscopy import align_and_scale
 
 
 class TimeSuite:
@@ -23,10 +23,10 @@ class TimeSuite:
         self.e_list = e_list
 
     def time_align_and_scale(self):
-        """Test skxray.spectroscopy align_and_scale.
+        """Test skbeam.spectroscopy align_and_scale.
 
         This code and the code generated the synthetic data are borrowed
-        from skxray/tests/test_spectroscopy.py
+        from skbeam/tests/test_spectroscopy.py
         """
         e_cor_list, c_cor_list = align_and_scale(self.e_list, self.c_list)
 
