@@ -39,6 +39,7 @@
         "scikit-image": [],
         "lmfit": [],
         "netcdf4": [],
+        "Cython": [],
     },
 
     // The directory (relative to the current directory) that benchmarks are
