@@ -1,19 +1,27 @@
-if __name__ == "__main__":
-    from skxray.core.accumulators.histogram import Histogram
-    import numpy as np
-    from time import time
+import numpy as np
+from skxray.core.accumulators.histogram import Histogram
 
-    axis_x = [1000, 0, 10.01]
-    axis_y = [900, 0, 9.01]
 
-    nelems = 50000000
+class TimeSuite:
+    params = [10**n for n in range(5, 9)]
+    param_names = ['data length']
 
-    xdata = np.linspace(0, 10, nelems)
-    ydata = np.linspace(0, 10, nelems)
+    def setup(self, n):
+        self.axis_x = [1000, 0, 10.01]
+        self.axis_y = [900, 0, 9.01]
+        self.axis_z = [800, 0, 8.01]
+        self.xdata = np.linspace(0, 10, n)
+        self.ydata = np.linspace(0, 9, n)
+        self.zdata = np.linspace(0, 8, n)
 
-    h = Histogram(axis_x, axis_y)
-    t0 = time()
-    h.fill(xdata, ydata)
-    t1 = time()
+    def time_1d_histogram(self, n):
+        h = Histogram(self.axis_x)
+        h.fill(self.xdata)
 
-    print('elements binned per second = %s' % (nelems / (t1-t0)))
+    def time_2d_histogram(self, n):
+        h = Histogram(self.axis_x, self.axis_y)
+        h.fill(self.xdata, self.ydata)
+
+    def time_3d_histogram(self, n):
+        h = Histogram(self.axis_x, self.axis_y, self.axis_z)
+        h.fill(self.xdata, self.ydata, self.zdata)
