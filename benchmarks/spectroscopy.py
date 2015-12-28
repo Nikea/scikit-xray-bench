@@ -3,12 +3,12 @@ from __future__ import (absolute_import, division, print_function,
 
 import six  # noqa
 import numpy as np
-from skbeam.spectroscopy import align_and_scale
+from skxray.core.spectroscopy import align_and_scale
 
 
 class TimeSuite:
 
-    def setUp(self):
+    def setup(self):
         E = np.linspace(0, 50, 1000)
         # this is not efficient for large lists, but quick and dirty
         e_list = []
